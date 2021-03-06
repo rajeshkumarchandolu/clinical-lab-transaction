@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: clinical-lab-transaction
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username:  root
+    password: toor
+    url: jdbc:mysql://localhost:3306/usermanagementTest
+  jpa:
+    generate-ddl: true
+    show-sql: true
+server:
+  port: 8888
+
+logging:
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  logback:
+    rollingpolicy:
+      max-file-size: 1MB
+
+
