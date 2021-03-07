@@ -34,7 +34,7 @@ public class ReportService {
     }
 
     public void delete(String id) {
-        Report report = getEntityByid(id);
+        reportRepository.deleteById(id);
     }
 
     public List<Report> search(Report report) {

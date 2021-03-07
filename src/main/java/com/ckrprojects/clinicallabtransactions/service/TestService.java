@@ -32,7 +32,6 @@ public class TestService {
     }
 
     public void delete(String id) {
-        Test test = getVisitByid(id);
-        testRepository.delete(test);
+        testRepository.deleteById(id);
     }
 }

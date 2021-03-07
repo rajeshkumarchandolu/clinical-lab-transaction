@@ -31,6 +31,6 @@ public class VisitService {
     }
 
     public void delete(String id) {
-        Visit visit = getVisitByid(id);
+        visitRepository.deleteById(id);
     }
 }
