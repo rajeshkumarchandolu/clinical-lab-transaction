@@ -21,7 +21,7 @@ public class VisitController {
 
 
     @GetMapping("/{id}")
-    public Visit get(@PathVariable("id") int id) {
+    public Visit get(@PathVariable("id") String id) {
         return visitService.getVisitByid(id);
     }
 
@@ -38,7 +38,7 @@ public class VisitController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int id,
+    public void delete(@PathVariable("id") String id,
                        @RequestBody Visit visit) {
         visitService.delete(id);
     }

@@ -34,7 +34,7 @@ public class ReportController {
 
 
     @GetMapping("/{id}")
-    public Report get(@PathVariable("id") int id) {
+    public Report get(@PathVariable("id") String id) {
         return reportService.getEntityByid(id);
     }
 
@@ -45,14 +45,14 @@ public class ReportController {
 
 
     @PostMapping("/{id}")
-    public Report put(@PathVariable("id") int id,
+    public Report put(@PathVariable("id") String id,
                       @RequestBody(required = true) Report report) {
         report.setId(id);
         return reportService.update(report);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable(value = "id", required = true) int id) {
+    public void delete(@PathVariable(value = "id", required = true) String id) {
         reportService.delete(id);
     }
 

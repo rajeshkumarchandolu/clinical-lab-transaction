@@ -9,18 +9,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ReportService {
-    private static Map<String, String> REPORT_FIELDS_NATIVE_MAP =
-            Map.of("phoneNumber", "phone_number", "doctorName",
-                    "doctor_name");
-
     @Autowired
     private ReportRepository reportRepository;
 
@@ -28,19 +21,19 @@ public class ReportService {
         return reportRepository.save(report);
     }
 
-    public Report getEntityByid(Integer id) {
+    public Report getEntityByid(String id) {
         final Optional<Report> visitOptional = reportRepository.findById(id);
         if (visitOptional.isPresent()) {
             return visitOptional.get();
         }
-        throw new NoSuchElementException(Integer.toString(id));
+        throw new NoSuchElementException(id);
     }
 
     public Report update(Report report) {
         return reportRepository.save(report);
     }
 
-    public void delete(int id) {
+    public void delete(String id) {
         Report report = getEntityByid(id);
     }
 

@@ -18,19 +18,19 @@ public class VisitService {
         return visitRepository.save(visit);
     }
 
-    public Visit getVisitByid(Integer id) {
+    public Visit getVisitByid(String id) {
         final Optional<Visit> visitOptional = visitRepository.findById(id);
         if (visitOptional.isPresent()) {
             return visitOptional.get();
         }
-        throw new NoSuchElementException(Integer.toString(id));
+        throw new NoSuchElementException(id);
     }
 
     public Visit update(Visit visit) {
         return visitRepository.save(visit);
     }
 
-    public void delete(int id) {
+    public void delete(String id) {
         Visit visit = getVisitByid(id);
     }
 }

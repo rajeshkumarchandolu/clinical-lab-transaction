@@ -21,7 +21,7 @@ public class TestController {
 
 
     @GetMapping("/{id}")
-    public Test get(@PathVariable("id") int id) {
+    public Test get(@PathVariable("id") String id) {
         return testService.getVisitByid(id);
     }
 
@@ -32,14 +32,14 @@ public class TestController {
 
 
     @PutMapping("/{id}")
-    public Test put(@PathVariable("id") int id,
+    public Test put(@PathVariable("id") String id,
                     @RequestBody(required = true) Test test) {
         test.setId(id);
         return testService.update(test);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable(value = "id", required = true) int id) {
+    public void delete(@PathVariable(value = "id", required = true) String id) {
         testService.delete(id);
     }
 }

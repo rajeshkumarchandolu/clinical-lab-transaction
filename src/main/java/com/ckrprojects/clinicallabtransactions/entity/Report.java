@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +21,9 @@ import java.util.List;
 @Table(name = "report")
 public class Report extends AuditingEntity<String> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

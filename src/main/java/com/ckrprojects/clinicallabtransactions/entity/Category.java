@@ -1,6 +1,7 @@
 package com.ckrprojects.clinicallabtransactions.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,8 +18,9 @@ import java.util.List;
 @Table(name = "category")
 public class Category extends AuditingEntity<String> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)

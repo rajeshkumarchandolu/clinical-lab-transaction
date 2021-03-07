@@ -18,20 +18,20 @@ public class TestService {
         return testRepository.save(test);
     }
 
-    public Test getVisitByid(Integer id) {
+    public Test getVisitByid(String id) {
         final Optional<Test> testOptional =
                 testRepository.findById(id);
         if (testOptional.isPresent()) {
             return testOptional.get();
         }
-        throw new NoSuchElementException(Integer.toString(id));
+        throw new NoSuchElementException(id);
     }
 
     public Test update(Test test) {
         return testRepository.save(test);
     }
 
-    public void delete(int id) {
+    public void delete(String id) {
         Test test = getVisitByid(id);
         testRepository.delete(test);
     }

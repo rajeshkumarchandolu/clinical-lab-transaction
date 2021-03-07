@@ -2,6 +2,7 @@ package com.ckrprojects.clinicallabtransactions.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,8 +20,9 @@ import java.util.List;
 @Table(name = "visit")
 public class Visit extends AuditingEntity<String> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
 
     @Column(name = "user_id")
     private int userid;
