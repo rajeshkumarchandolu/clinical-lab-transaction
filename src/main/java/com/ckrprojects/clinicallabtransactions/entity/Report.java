@@ -1,11 +1,12 @@
 package com.ckrprojects.clinicallabtransactions.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,10 +26,11 @@ public class Report extends AuditingEntity<String> {
     private int id;
 
     @JsonBackReference
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "visit_id", referencedColumnName = "id")
     private Visit visit;
 
+    private String phoneNumber;
     private Date reportDate;
     private String doctorName;
 
